@@ -1,0 +1,235 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>{{configuracoes.titulo|default:'Não cadastrado'}}</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css">
+  <!-- css uikit -->
+  <link href="{% static 'css/uikit.min.css' %}" rel="stylesheet">
+  <link href="{% static 'css/components/slideshow.min.css' %}" rel="stylesheet">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+<body>
+
+  <div id="app">
+    <!--Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark unique-color">
+
+      <!-- Navbar brand -->
+      <a class="navbar-brand" href="/">{{configuracoes.titulo|default:"Não cadastrado"}}</a>
+
+      <!-- Collapse button -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+        aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Collapsible content -->
+      <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+
+        <ul class="navbar-nav mr-auto">
+          <li id="navQuemSomos" class="nav-item">
+            <a class="nav-link">Sobre
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li id="navContato" class="nav-item">
+            <a class="nav-link">Contato
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/admin">Admin
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+        </ul>
+
+        <!-- Links -->
+        <!--
+        <form class="form-inline"> --
+          <div class="md-form my-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Pesquisar" aria-label="Search">
+          </div>
+        </form>
+        -->
+      </div>
+      <!-- Collapsible content -->
+
+    </nav>
+    <!--/.Navbar-->
+
+    <div class="container mt-4">
+      <!-- Conteúdo base -->
+      {% block conteudo %} {% endblock %}
+    </div>
+  </div>
+
+  <!-- Adicionando footer -->
+  {% include "footer.html" %}
+
+  <!-- Modal quem somos -->
+
+  <div id="modalQuemSomos" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
+          <!--Content-->
+          <div class="modal-content">
+              <!--Header-->
+              <div class="modal-header">
+                  <p class="heading lead">Quem Somos</p>
+
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true" class="white-text">×</span>
+                  </button>
+              </div>
+
+              <!--Body-->
+              <div class="modal-body">
+                  <div class="text-center">
+                      <!--<i class="fa fa-info fa-4x mb-3 animated rotateIn"></i>-->
+                      <p>{{configuracoes.sobre|default:'Não cadastrado'}}</p>
+                  </div>
+              </div>
+
+              <!--Footer-->
+              <div class="modal-footer">
+
+              </div>
+          </div>
+          <!--/.Content-->
+      </div>
+  </div>
+
+  <!--/.Modal quem somos -->
+
+  <!-- Modal contato -->
+
+  <div id="modalContato" class="modal fade top" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" data-backdrop="false">
+       <div class="modal-dialog modal-full-height modal-top modal-notify modal-info" role="document">
+           <!--Content-->
+           <div class="modal-content">
+               <!--Header-->
+               <div class="modal-header">
+                   <p class="heading lead">Mensagem</p>
+
+                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                       <span aria-hidden="true" class="white-text">×</span>
+                   </button>
+               </div>
+
+               <!--Body-->
+               <div class="modal-body container">
+                   <div class="text-center">
+                           <i class="fa fa-envelope fa-4x mb-3 animated rotateIn"></i>
+                   </div>
+                   <!-- Material form contact -->
+                   <form>
+                       <p class="h4 text-center mb-4">Escreva para nós</p>
+
+                       <!-- Material input text -->
+                       <div class="md-form">
+                           <i class="fa fa-user prefix grey-text"></i>
+                           <input type="text" id="materialFormContactNameEx" class="form-control">
+                           <label for="materialFormContactNameEx">Seu nome</label>
+                       </div>
+
+                       <!-- Material input email -->
+                       <div class="md-form">
+                           <i class="fa fa-envelope prefix grey-text"></i>
+                           <input type="email" id="materialFormContactEmailEx" class="form-control">
+                           <label for="materialFormContactEmailEx">Seu e-mail</label>
+                       </div>
+
+                       <!-- Material textarea message -->
+                       <div class="md-form">
+                           <i class="fa fa-pencil prefix grey-text"></i>
+                           <textarea type="text" id="materialFormContactMessageEx" class="form-control md-textarea" rows="3"></textarea>
+                           <label for="materialFormContactMessageEx">Sua mensagem</label>
+                       </div>
+
+                       <div class="text-center mt-4">
+                           <button class="btn btn-info waves-effect waves-light">Enviar
+                               <i class="fa fa-send ml-2"></i>
+                           </button>
+                       </div>
+                   </form>
+                   <!-- Material form contact -->
+
+               </div>
+
+           </div>
+           <!--/.Content-->
+       </div>
+   </div>
+
+  <!--/.Modal contato -->
+
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+  <!-- js uikit -->
+  <script src="{% static 'js/uikit.min.js' %}"></script>
+  <script src="{% static 'js/components/slideshow.min.js' %}"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="{% static 'js/popper.min.js' %}"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+
+  <script type="text/javascript">
+
+    /*------------------------------------------------------------------------------
+    | Função avalia altura da tela para dimensionar a altura da div app
+    | para que o footer fique no final da tela mesmo sem estar com posição fixa
+    |-----------------------------------------------------------------------------*/
+    function alturaMinimaApp(){
+     // Colhendo altura da tela
+     var alturaTela = $(window).height();
+     // Colhendo altura do fooater
+     var alturaFooter = $("#footer").height();
+
+     // Tamanho minimo para a div app de acordo com a altura da tela
+     var alturaMinimo = alturaTela - alturaFooter;
+     // Tamanho minimo calculado para a div app
+     $("#app").css('min-height', alturaMinimo);
+    }
+
+    $(document).ready(function(){
+      /* Visualizar modal quem somos */
+      $("#navQuemSomos").on("click", function(){
+        // Abrir modal quem somos
+        $("#modalQuemSomos").modal("show");
+      });
+
+      /* Visualizar modal contato */
+      $("#navContato").on("click", function(){
+        // Abrir modal quem somos
+        $("#modalContato").modal("show");
+      });
+
+      alturaMinimaApp();
+
+      /*console.log("{{imoveis}}");*/
+
+    });
+
+
+  </script>
+
+</body>
+</html>

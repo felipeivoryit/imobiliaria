@@ -1,0 +1,25 @@
+<footer id="footer" class="page-footer text-center font-small wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+
+  <div class="container">
+    <div class="row">
+      {% if configuracoes.endereco %}
+        <div class="col-sm">
+          <div class="col-md-12 mb-3 white-text text-center wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+            <h6 class="display-5 font-weight-bold white-text mb-0 pt-md-3">Endereço</h6>
+            <hr class="hr-light my-3">
+              {{ configuracoes.endereco }}
+          </div>
+        </div>
+      {% endif %}
+
+    </div>
+  </div>
+
+  <!--Copyright-->
+  <div class="footer-copyright py-3">
+    © 2019 Copyright:
+    <a href="http://ivoryit.com.br/" target="_blank"> IvoryIt</a>
+  </div>
+  <!--/.Copyright-->
+
+</footer>

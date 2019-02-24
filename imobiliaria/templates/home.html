@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block conteudo %}
+
+<div class="container">
+
+    {% if configuracoes.titulo %}
+      <div id="titulo" class="card-body text-white text-center">
+        <h1 class="mb-4">
+          <strong>{{ configuracoes.titulo}}</strong>
+        </h1>
+      </div>
+    {% endif %}
+
+    <!--Section: Jumbotron-->
+    <section id="headerSlides" class="card wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.2s;">
+
+          <!-- Header slides imagens de fundo -->
+          <ul class="uk-slideshow" data-uk-slideshow="{autoplay:true,kenburns:true}">
+              {% if configuracoes.image %}
+                <li><img src='{{ configuracoes.image.url }}' alt=""></li>
+              {% endif %}
+              {% if configuracoes.image2 %}
+                <li><img src='{{ configuracoes.image2.url }}' alt=""></li>
+              {% endif %}
+              {% if configuracoes.image3 %}
+                <li><img src='{{ configuracoes.image3.url }}' alt=""></li>
+              {% endif %}
+          </ul>
+
+    </section>
+
+    <div id="cardFiltro">
+
+      <div class="accordion" id="accordionExample">
+        <div class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button id="btnMenuPesquisa" class="btn btn-block black-text" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                <span>Pesquisa</span> <i class="fas fa-angle-up"></i> <i class="fas fa-angle-down"></i>
+              </button>
+            </h5>
+
+          </div>
+
+          <div id="collapseOne" class="collapse fade" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                    <div id="filtrosBusca" class="row align-items-center filtrosBusca">
+                      <!-- Finalidade dos imóveis -->
+                      <div class="col">
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Finalidades</span>
+                          </div>
+                          <!-- Build your select: -->
+                          <select name="selectFinalidades[]" id="selectFinalidade" class="" multiple="multiple" aria-describedby="basic-addon1">
+                            
+                          </select>
+                        </div>
+                      </div>
+                      <!-- Tipo de imóveis -->
+                      <div class="col">
+                        <div id="groupTipo" class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Tipos</span>
+                          </div>
+                          <!-- Build your select: -->
+                          <select name="selectTipos[]" id="selectTipo" class="bootstrapMultiselect" multiple="multiple" aria-describedby="basic-addon1">
+
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row align-items-center filtrosBusca">
+                      <!-- Cidade imóveis -->
+                      <div class="col">
+                        <div id="groupCidade" class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Cidades</span>
+                          </div>
+                          <!-- Build your select: -->
+                          <select name="selectCidades[]" id="selectCidade" class="bootstrapMultiselect" multiple="multiple" aria-describedby="basic-addon1">
+                          </select>
+                        </div>
+                      </div>
+                      <!-- Bairro imóveis -->
+                      <div class="col">
+                        <div id="groupBairro" class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">Bairros</span>
+                          </div>
+                          <!-- Build your select: -->
+                          <select name="selectBairros[]" id="selectBairro" class="bootstrapMultiselect" multiple="multiple" aria-describedby="basic-addon1">
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row align-items-center filtrosBusca">
+                      <button id="btn_pesquisar" class="btn btn-primary"><i class="fas fa-search"></i> Pesquisar</button>
+                    </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+
+    <hr class="my-5">
+
+    <!--Section: Cards-->
+    <section class="text-center">
+
+        <!--Grid row-->
+        <div class="row mb-4 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+
+            {% for imovel in imoveis %}
+
+            <!--Grid column-->
+            <div class="col-lg-4 col-md-6 mb-4">
+
+
+              <div class="listaImoveis card mb-r wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.2s;">
+
+                    <!--Card image-->
+                    <ul class="uk-slideshow imgCardImovel" data-uk-slideshow="{autoplay:true,kenburns:true}" style="height: 185.625px;">
+                      {% for imagem in imovel.imagens %}
+                        <li><img src="{{ imagem.image.url }}" width="1920px" height="1080px" alt=""></li>
+                      {% endfor %}
+                    </ul>
+
+                    <!--Card content-->
+                    <div class="card-body">
+                        <!--Title-->
+                        <h4 class="card-title">
+                            <strong>{{ imovel.id }}</strong>
+                        </h4>
+                        <!--Text-->
+                        <p class="card-text">{{ movel.descricao_resumida }}</p>
+                        <ul class="list-group z-depth-0">
+                            <li class="list-group-item justify-content-between">
+                                {{ imovel.cidade }}
+                                <span class="badge badge-primary badge-pill">cidade</span>
+                            </li>
+                            <li class="list-group-item justify-content-between">
+                                {{ imovel.bairro }}
+                                <span class="badge badge-primary badge-pill">bairro</span>
+                            </li>
+                        </ul>
+                        <a class="btnDescricaoDetalhada btn btn-blue-grey btn-md waves-effect waves-light">Detalhes</a>
+                    </div>
+
+                </div>
+
+
+            </div>
+          <!--Grid column-->
+
+          {% endfor %}
+
+        </div>
+        <!--Grid row-->
+
+        <!--Pagination-->
+        <nav class="d-flex justify-content-center wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
+
+        </nav>
+        <!--Pagination-->
+
+    </section>
+    <!--Section: Cards-->
+
+</div>
+
+{% endblock %}

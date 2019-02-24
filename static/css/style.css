@@ -1,0 +1,135 @@
+/* ---------------------------------------------- *
+
+
+                BARRA DE BUSCA
+
+
+* ---------------------------------------------- */
+
+.multiselect-native-select{
+    width: 70%;
+}
+.multiselect-native-select .btn-group{
+    width: 100%;
+}
+.multiselect-native-select .btn-group .multiselect{
+    width: 100%;
+}
+.multiselect-container .checkbox{
+    width: 100%;
+}
+.multiselect-item.multiselect-filter .input-group.mb-3{
+    padding-right: 10px;
+}
+.multiselect-item.multiselect-filter{
+    background-color: unset!important;
+}
+.multiselect-container li:hover {
+    background-color: #e9ecef;
+}
+
+.card.wow.fadeIn{
+    position: unset;
+}
+
+#cardFiltro{
+
+    margin-top: -3rem;
+    background: ghostwhite;
+    margin-left: 4%;
+    margin-right: 4%;
+    /*box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);*/
+    padding-top: 2px;
+    padding-bottom: 4px;
+}
+
+.filtrosBusca .input-group-prepend{
+    width: 100px;
+}
+
+.filtrosBusca .input-group-prepend .input-group-text{
+    width: 100%;
+}
+
+.multiselect-container.dropdown-menu.show{
+    max-height: 200px!important;
+}
+
+@media only screen and (max-width: 1000px) {
+    .filtrosBusca .col{
+      flex-basis: unset;
+    }
+    .multiselect-native-select{
+      width: 82%;
+    }
+}
+
+
+@media only screen and (max-width: 770px) {
+    .multiselect-native-select{
+      width: 100%;
+    }
+    
+    
+}
+
+#btn_pesquisar{
+    margin-left: auto;
+}
+
+#groupCidade .btn.disabled{
+    cursor: wait;
+}
+
+#accordionExample #headingOne{
+    padding: 0;
+}
+
+#accordionExample .card-body{
+    /*padding-top: 4px;*/
+    padding-bottom: 4px;
+}
+
+#cardHeader {
+   /*max-width: 80%;*/
+   margin: 90px 5% 0 5%;
+}
+
+#cardImage ul {
+   max-height: 500px;
+}
+
+#cardImage {
+   margin-left: 4%;
+   margin-right: 4%;
+   margin-top: -1.25rem;
+   border-radius: .65rem;
+   box-shadow: 0 5px 11px 0 rgba(0, 0, 0, .18), 0 4px 15px 0 rgba(0, 0, 0, .15);
+}
+
+#cardImage ul {
+   border-radius: .65rem;
+}
+#headerSlides{
+ max-height: 460px;
+ margin-top: 10px;
+}
+
+#titulo{
+ position: absolute;
+ z-index: 100;
+
+}
+#titulo h1 {
+ background-color: rgba(0,0,0,.5);
+ padding: 10px;
+}
+
+
+/* ---------------------------------------------- *
+
+
+            FIM BARRA DE BUSCA
+
+
+* ---------------------------------------------- */
