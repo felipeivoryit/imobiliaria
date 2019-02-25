@@ -40,7 +40,10 @@ INSTALLED_APPS = [
     'imobiliaria.apps.ImobiliariaConfig',
     'form_utils',
     'django_cleanup',
+    'smart_selects'
 ]
+
+USE_DJANGO_JQUERY = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

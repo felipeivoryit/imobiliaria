@@ -6,6 +6,8 @@ from . import Tipo
 from . import Cidade
 from . import Bairro
 
+from smart_selects.db_fields import ChainedForeignKey
+
 
 class Imovel(models.Model):
 
@@ -59,10 +61,15 @@ class Imovel(models.Model):
     cidade = models.ForeignKey(
         Cidade, on_delete = models.CASCADE
     )
-    bairro = models.ForeignKey(
-        Bairro, on_delete = models.CASCADE
+    bairro = ChainedForeignKey(
+        Bairro,
+        chained_field="cidade",
+        chained_model_field="cidade",
+        show_all=False,
+        auto_choose=True,
+        sort=True,
+        on_delete = models.CASCADE
     )
-
     created_at = models.DateTimeField(
         auto_now_add = True,
         verbose_name = 'Criado'

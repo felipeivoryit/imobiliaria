@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django import forms
+from django.forms import ModelForm
 from django.forms.utils import ErrorList
 
 from .models import Configuracao, Finalidade, Tipo, Cidade, Bairro, Imovel, Status, Imagem
@@ -22,6 +23,7 @@ class ConfiguracaoAdmin(admin.ModelAdmin):
         if Configuracao.objects.count() > 0:
             return False
         return True
+
 # Personalizar admin model Finalidade
 class FinalidadeAdmin(admin.ModelAdmin):
 
@@ -40,11 +42,9 @@ class TipoAdmin(admin.ModelAdmin):
     ]
     empty_value_display = 'Não informado'
 
-
 # Adicionando tabela de imagens para serem cadastradas no imovel
 class ImagensInstanceInline(admin.TabularInline):
     model = Imagem
-
 class ImagemAdmin(admin.ModelAdmin):
     inlines = [ImagensInstanceInline,]
 
@@ -52,6 +52,21 @@ class ImagemAdmin(admin.ModelAdmin):
 class ImovelAdmin(admin.ModelAdmin):
     inlines = [ImagensInstanceInline,]
     exclude = ('imagens',)
+    list_display = [
+        'pk',
+        'cidade',
+        'bairro',
+        'descricao_resumida'
+    ]
+    empty_value_display = 'Não informado'
+
+# Personalizar admin model Bairros
+class BairroAdmin(admin.ModelAdmin):
+    list_display = [
+        'nome',
+        'cidade'
+    ]
+
 
 # Adicionando models a class admin
 
@@ -64,7 +79,7 @@ admin.site.register(Tipo, TipoAdmin)
 # Cidades
 admin.site.register(Cidade)
 # Bairros
-admin.site.register(Bairro)
+admin.site.register(Bairro, BairroAdmin)
 # Imóvel
 admin.site.register(Imovel, ImovelAdmin)
 # Status

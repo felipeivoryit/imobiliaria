@@ -110,8 +110,6 @@
         </div>
       </div>
 
-
-
     </div>
 
     <hr class="my-5">
@@ -122,49 +120,63 @@
         <!--Grid row-->
         <div class="row mb-4 wow fadeIn" style="visibility: visible; animation-name: fadeIn;">
 
+          {% if imoveis %}
+
             {% for imovel in imoveis %}
 
-            <!--Grid column-->
-            <div class="col-lg-4 col-md-6 mb-4">
+              <!--Grid column-->
+              <div class="col-lg-4 col-md-6 mb-4">
 
 
-              <div class="listaImoveis card mb-r wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.2s;">
+                <div class="listaImoveis card mb-r wow fadeIn" data-wow-delay="0.2s" style="visibility: visible; animation-name: fadeIn; animation-delay: 0.2s;">
 
-                    <!--Card image-->
-                    <ul class="uk-slideshow imgCardImovel" data-uk-slideshow="{autoplay:true,kenburns:true}" style="height: 185.625px;">
-                      {% for imagem in imovel.imagens %}
-                        <li><img src="{{ imagem.image.url }}" width="1920px" height="1080px" alt=""></li>
-                      {% endfor %}
-                    </ul>
+                      <!--Card image-->
+                      <ul class="uk-slideshow imgCardImovel" data-uk-slideshow="{autoplay:true,kenburns:true}" style="height: 185.625px;">
+                        {% for imagem in imovel.imagens %}
+                          <li><img src="{{ imagem.image.url }}" width="1920px" height="1080px" alt=""></li>
+                        {% endfor %}
+                      </ul>
 
-                    <!--Card content-->
-                    <div class="card-body">
-                        <!--Title-->
-                        <h4 class="card-title">
-                            <strong>{{ imovel.id }}</strong>
-                        </h4>
-                        <!--Text-->
-                        <p class="card-text">{{ movel.descricao_resumida }}</p>
-                        <ul class="list-group z-depth-0">
-                            <li class="list-group-item justify-content-between">
-                                {{ imovel.cidade }}
-                                <span class="badge badge-primary badge-pill">cidade</span>
-                            </li>
-                            <li class="list-group-item justify-content-between">
-                                {{ imovel.bairro }}
-                                <span class="badge badge-primary badge-pill">bairro</span>
-                            </li>
-                        </ul>
-                        <a class="btnDescricaoDetalhada btn btn-blue-grey btn-md waves-effect waves-light">Detalhes</a>
-                    </div>
+                      <!--Card content-->
+                      <div class="card-body">
+                          <!--Title-->
+                          <h4 class="card-title">
+                              <strong>{{ imovel.id }}</strong>
+                          </h4>
+                          <!--Text-->
+                          <p class="card-text">{{ movel.descricao_resumida }}</p>
+                          <ul class="list-group z-depth-0">
+                              <li class="list-group-item justify-content-between">
+                                  {{ imovel.cidade }}
+                                  <span class="badge badge-primary badge-pill">cidade</span>
+                              </li>
+                              <li class="list-group-item justify-content-between">
+                                  {{ imovel.bairro }}
+                                  <span class="badge badge-primary badge-pill">bairro</span>
+                              </li>
+                          </ul>
+                          <a class="btnDescricaoDetalhada btn btn-blue-grey btn-md waves-effect waves-light">Detalhes</a>
+                      </div>
 
+                  </div>
+
+
+              </div>
+              <!--Grid column-->
+
+            {% endfor %}
+          {% else %}
+          <div class="container">
+            <div class="row">
+              <div class="col align-self-center">
+                <div class="alert alert-info" role="alert">
+                  Nem um imóvel cadastrado!
                 </div>
-
-
+              </div>
             </div>
-          <!--Grid column-->
+          </div>
 
-          {% endfor %}
+          {% endif %}
 
         </div>
         <!--Grid row-->
@@ -224,5 +236,7 @@
      maxHeight: 400,
      dropUp: true,
   });
+
+
 
 {% endblock %}

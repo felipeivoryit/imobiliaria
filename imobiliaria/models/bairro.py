@@ -5,11 +5,12 @@ from . import Cidade
 class Bairro(models.Model):
     nome = models.CharField(
         max_length = 120,
-        verbose_name = 'Bairro',
-        unique = True
+        verbose_name = 'Bairro'
     )
     cidade = models.ForeignKey(
-        Cidade, on_delete = models.CASCADE
+        Cidade,
+        on_delete = models.CASCADE,
+        related_name='cidade_bairros',
     )
     created_at = models.DateTimeField(
         auto_now_add = True,

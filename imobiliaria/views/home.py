@@ -6,6 +6,7 @@ from ..models import Configuracao
 from ..models import Imovel
 from ..models import Imagem
 from ..models import Finalidade, Tipo
+from ..models import Cidade
 
 
 def view_home(request):
@@ -22,6 +23,9 @@ def view_home(request):
     # Retornar todos imoveis cadastrados
     imoveis = Imovel.objects.all()
 
+    # Retornar todas as cidades cadastradas
+    cidades = Cidade.objects.all()
+
     # Adicionando imagens de cada imóveis
     for imovel in imoveis:
         imovel.imagens = Imagem.objects.filter(imovel = imovel.pk)
@@ -32,7 +36,8 @@ def view_home(request):
         'configuracoes': configuracoes,
         'finalidades': finalidades,
         'tipos': tipos,
-        'imoveis': imoveis
+        'imoveis': imoveis,
+        'cidades': cidades
         #'imoveis': serialize('json', imoveis)
     }
 

@@ -204,6 +204,8 @@
 
   <script type="text/javascript">
 
+    var objects = [];
+
     /*------------------------------------------------------------------------------
     | Função avalia altura da tela para dimensionar a altura da div app
     | para que o footer fique no final da tela mesmo sem estar com posição fixa
@@ -243,10 +245,22 @@
           $('#loading').css('display', 'none');
       }, 200);
 
+
       /*console.log("{{imoveis}}");*/
 
-    });
 
+
+      {% for cidade in cidades %}
+          cidades = {
+              pk: "{{ cidade.pk }}",
+              nome: "{{ cidade.nome }}",
+              // etc.
+          };
+          objects.push(cidades);
+      {% endfor %}
+
+
+    });
 
   </script>
 
