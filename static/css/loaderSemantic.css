@@ -1,0 +1,347 @@
+/*!
+ * # Semantic UI 2.3.1 - loaderSemantic
+ * http://github.com/semantic-org/semantic-ui/
+ *
+ *
+ * Released under the MIT license
+ * http://opensource.org/licenses/MIT
+ *
+ */
+
+
+/*******************************
+            loaderSemantic
+*******************************/
+
+
+/* Standard Size */
+.ui.loaderSemantic {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0px;
+  text-align: center;
+  z-index: 10000;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+          transform: translateX(-50%) translateY(-50%);
+}
+
+/* Static Shape */
+.ui.loaderSemantic:before {
+  position: absolute;
+  content: '';
+  top: 0%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border-radius: 500rem;
+  border: 0.2em solid rgba(0, 0, 0, 0.1);
+}
+
+/* Active Shape */
+.ui.loaderSemantic:after {
+  position: absolute;
+  content: '';
+  top: 0%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  -webkit-animation: loaderSemantic 0.6s linear;
+          animation: loaderSemantic 0.6s linear;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  border-radius: 500rem;
+  border-color: #767676 transparent transparent;
+  border-style: solid;
+  border-width: 0.2em;
+  -webkit-box-shadow: 0px 0px 0px 1px transparent;
+          box-shadow: 0px 0px 0px 1px transparent;
+}
+
+/* Active Animation */
+@-webkit-keyframes loaderSemantic {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes loaderSemantic {
+  from {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+/* Sizes */
+.ui.mini.loaderSemantic:before,
+.ui.mini.loaderSemantic:after {
+  width: 1rem;
+  height: 1rem;
+  margin: 0em 0em 0em -0.5rem;
+}
+.ui.tiny.loaderSemantic:before,
+.ui.tiny.loaderSemantic:after {
+  width: 1.14285714rem;
+  height: 1.14285714rem;
+  margin: 0em 0em 0em -0.57142857rem;
+}
+.ui.small.loaderSemantic:before,
+.ui.small.loaderSemantic:after {
+  width: 1.71428571rem;
+  height: 1.71428571rem;
+  margin: 0em 0em 0em -0.85714286rem;
+}
+.ui.loaderSemantic:before,
+.ui.loaderSemantic:after {
+  width: 2.28571429rem;
+  height: 2.28571429rem;
+  margin: 0em 0em 0em -1.14285714rem;
+}
+.ui.large.loaderSemantic:before,
+.ui.large.loaderSemantic:after {
+  width: 3.42857143rem;
+  height: 3.42857143rem;
+  margin: 0em 0em 0em -1.71428571rem;
+}
+.ui.big.loaderSemantic:before,
+.ui.big.loaderSemantic:after {
+  width: 3.71428571rem;
+  height: 3.71428571rem;
+  margin: 0em 0em 0em -1.85714286rem;
+}
+.ui.huge.loaderSemantic:before,
+.ui.huge.loaderSemantic:after {
+  width: 4.14285714rem;
+  height: 4.14285714rem;
+  margin: 0em 0em 0em -2.07142857rem;
+}
+.ui.massive.loaderSemantic:before,
+.ui.massive.loaderSemantic:after {
+  width: 4.57142857rem;
+  height: 4.57142857rem;
+  margin: 0em 0em 0em -2.28571429rem;
+}
+
+/*-------------------
+      Coupling
+--------------------*/
+
+
+/* Show inside active dimmer */
+.ui.dimmer .loaderSemantic {
+  display: block;
+}
+
+/* Black Dimmer */
+.ui.dimmer .ui.loaderSemantic {
+  /*color: rgba(255, 255, 255, 0.9);*/
+    font-size: 18px;
+    color: #4285f4;
+}
+.ui.dimmer .ui.loaderSemantic:before {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.ui.dimmer .ui.loaderSemantic:after {
+  /*border-color: #FFFFFF transparent transparent;*/
+    border-color: #4285f4 transparent transparent;
+}
+
+/* White Dimmer (Inverted) */
+.ui.inverted.dimmer .ui.loaderSemantic {
+  color: rgba(0, 0, 0, 0.87);
+}
+.ui.inverted.dimmer .ui.loaderSemantic:before {
+  border-color: rgba(0, 0, 0, 0.1);
+}
+.ui.inverted.dimmer .ui.loaderSemantic:after {
+  border-color: #767676 transparent transparent;
+}
+
+
+/*******************************
+             Types
+*******************************/
+
+
+/*-------------------
+        Text
+--------------------*/
+
+.ui.text.loaderSemantic {
+  width: auto !important;
+  height: auto !important;
+  text-align: center;
+  font-style: normal;
+}
+
+
+/*******************************
+            States
+*******************************/
+
+.ui.indeterminate.loaderSemantic:after {
+  animation-direction: reverse;
+  -webkit-animation-duration: 1.2s;
+          animation-duration: 1.2s;
+}
+.ui.loaderSemantic.active,
+.ui.loaderSemantic.visible {
+  display: block;
+}
+.ui.loaderSemantic.disabled,
+.ui.loaderSemantic.hidden {
+  display: none;
+}
+
+
+/*******************************
+            Variations
+*******************************/
+
+
+/*-------------------
+        Sizes
+--------------------*/
+
+
+/* loaderSemantic */
+.ui.inverted.dimmer .ui.mini.loaderSemantic,
+.ui.mini.loaderSemantic {
+  width: 1rem;
+  height: 1rem;
+  font-size: 0.78571429em;
+}
+.ui.inverted.dimmer .ui.tiny.loaderSemantic,
+.ui.tiny.loaderSemantic {
+  width: 1.14285714rem;
+  height: 1.14285714rem;
+  font-size: 0.85714286em;
+}
+.ui.inverted.dimmer .ui.small.loaderSemantic,
+.ui.small.loaderSemantic {
+  width: 1.71428571rem;
+  height: 1.71428571rem;
+  font-size: 0.92857143em;
+}
+.ui.inverted.dimmer .ui.loaderSemantic,
+.ui.loaderSemantic {
+  width: 2.28571429rem;
+  height: 2.28571429rem;
+  font-size: 1em;
+}
+.ui.inverted.dimmer .ui.large.loaderSemantic,
+.ui.large.loaderSemantic {
+  width: 3.42857143rem;
+  height: 3.42857143rem;
+  font-size: 1.14285714em;
+}
+.ui.inverted.dimmer .ui.big.loaderSemantic,
+.ui.big.loaderSemantic {
+  width: 3.71428571rem;
+  height: 3.71428571rem;
+  font-size: 1.28571429em;
+}
+.ui.inverted.dimmer .ui.huge.loaderSemantic,
+.ui.huge.loaderSemantic {
+  width: 4.14285714rem;
+  height: 4.14285714rem;
+  font-size: 1.42857143em;
+}
+.ui.inverted.dimmer .ui.massive.loaderSemantic,
+.ui.massive.loaderSemantic {
+  width: 4.57142857rem;
+  height: 4.57142857rem;
+  font-size: 1.71428571em;
+}
+
+/* Text loaderSemantic */
+.ui.mini.text.loaderSemantic {
+  min-width: 1rem;
+  padding-top: 1.78571429rem;
+}
+.ui.tiny.text.loaderSemantic {
+  min-width: 1.14285714rem;
+  padding-top: 1.92857143rem;
+}
+.ui.small.text.loaderSemantic {
+  min-width: 1.71428571rem;
+  padding-top: 2.5rem;
+}
+.ui.text.loaderSemantic {
+  min-width: 2.28571429rem;
+  padding-top: 3.07142857rem;
+}
+.ui.large.text.loaderSemantic {
+  min-width: 3.42857143rem;
+  padding-top: 4.21428571rem;
+}
+.ui.big.text.loaderSemantic {
+  min-width: 3.71428571rem;
+  padding-top: 4.5rem;
+}
+.ui.huge.text.loaderSemantic {
+  min-width: 4.14285714rem;
+  padding-top: 4.92857143rem;
+}
+.ui.massive.text.loaderSemantic {
+  min-width: 4.57142857rem;
+  padding-top: 5.35714286rem;
+}
+
+/*-------------------
+       Inverted
+--------------------*/
+
+.ui.inverted.loaderSemantic {
+  color: rgba(255, 255, 255, 0.9);
+}
+.ui.inverted.loaderSemantic:before {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.ui.inverted.loaderSemantic:after {
+  border-top-color: #FFFFFF;
+}
+
+/*-------------------
+       Inline
+--------------------*/
+
+.ui.inline.loaderSemantic {
+  position: relative;
+  vertical-align: middle;
+  margin: 0em;
+  left: 0em;
+  top: 0em;
+  -webkit-transform: none;
+          transform: none;
+}
+.ui.inline.loaderSemantic.active,
+.ui.inline.loaderSemantic.visible {
+  display: inline-block;
+}
+
+/* Centered Inline */
+.ui.centered.inline.loaderSemantic.active,
+.ui.centered.inline.loaderSemantic.visible {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ajustes css loaderSemantic semantic ui */
+.ui.active.dimmer{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,1);
+    position: fixed;
+    z-index: 10000;
+}

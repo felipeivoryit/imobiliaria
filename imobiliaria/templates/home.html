@@ -56,7 +56,9 @@
                           </div>
                           <!-- Build your select: -->
                           <select name="selectFinalidades[]" id="selectFinalidade" class="" multiple="multiple" aria-describedby="basic-addon1">
-                            
+                             {% for finalidade in finalidades %}
+                              <option value="{{ finalidade.id }}">{{ finalidade.nome }}</option>
+                             {% endfor %}
                           </select>
                         </div>
                       </div>
@@ -68,7 +70,9 @@
                           </div>
                           <!-- Build your select: -->
                           <select name="selectTipos[]" id="selectTipo" class="bootstrapMultiselect" multiple="multiple" aria-describedby="basic-addon1">
-
+                            {% for tipo in tipos %}
+                             <option value="{{ tipo.id }}">{{ tipo.nome }}</option>
+                            {% endfor %}
                           </select>
                         </div>
                       </div>
@@ -175,5 +179,50 @@
     <!--Section: Cards-->
 
 </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+  /******************************************************************************
+      SELETOR FINALIDADES DOS IMÓVEIS, CRIANDO Multiselect E ATRIBUINDO FUNÇÕES
+  ******************************************************************************/
+  $('#selectFinalidade').multiselect({
+     enableFiltering: true,
+     enableCaseInsensitiveFiltering: true,
+     includeSelectAllOption: true,
+     maxHeight: 400,
+     dropUp: true,
+  });
+  /******************************************************************************
+      SELETOR TIPOS DOS IMÓVEIS, CRIANDO Multiselect E ATRIBUINDO FUNÇÕES
+  ******************************************************************************/
+  $('#selectTipo').multiselect({
+     enableFiltering: true,
+     enableCaseInsensitiveFiltering: true,
+     includeSelectAllOption: true,
+     maxHeight: 400,
+     dropUp: true,
+  });
+  /******************************************************************************
+      SELETOR CIDADES DOS IMÓVEIS, CRIANDO Multiselect E ATRIBUINDO FUNÇÕES
+  ******************************************************************************/
+  $('#selectCidade').multiselect({
+     enableFiltering: true,
+     enableCaseInsensitiveFiltering: true,
+     includeSelectAllOption: true,
+     maxHeight: 400,
+     dropUp: true,
+  });
+  /******************************************************************************
+      SELETOR BAIRROS DOS IMÓVEIS, CRIANDO Multiselect E ATRIBUINDO FUNÇÕES
+  ******************************************************************************/
+  $('#selectBairro').multiselect({
+     enableFiltering: true,
+     enableCaseInsensitiveFiltering: true,
+     includeSelectAllOption: true,
+     maxHeight: 400,
+     dropUp: true,
+  });
 
 {% endblock %}

@@ -5,6 +5,7 @@ from django.core.serializers import serialize
 from ..models import Configuracao
 from ..models import Imovel
 from ..models import Imagem
+from ..models import Finalidade, Tipo
 
 
 def view_home(request):
@@ -12,9 +13,16 @@ def view_home(request):
     # Retornar configurações
     configuracoes = Configuracao.objects.first()
 
+    # Retornar finalidades cadastradas
+    finalidades = Finalidade.objects.all()
+
+    # Retornar tipos cadastrados
+    tipos = Tipo.objects.all()
+
     # Retornar todos imoveis cadastrados
     imoveis = Imovel.objects.all()
 
+    # Adicionando imagens de cada imóveis
     for imovel in imoveis:
         imovel.imagens = Imagem.objects.filter(imovel = imovel.pk)
         print(imovel.imagens)
@@ -22,6 +30,8 @@ def view_home(request):
     # Adicionando objeto para ser adicionado ao template
     contexto = {
         'configuracoes': configuracoes,
+        'finalidades': finalidades,
+        'tipos': tipos,
         'imoveis': imoveis
         #'imoveis': serialize('json', imoveis)
     }

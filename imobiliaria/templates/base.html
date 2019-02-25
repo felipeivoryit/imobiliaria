@@ -13,13 +13,22 @@
   <link href="{% static 'css/components/slideshow.min.css' %}" rel="stylesheet">
   <!-- Bootstrap core CSS -->
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- css loading semantic -->
+  <link href="{% static 'css/loaderSemantic.css' %}" rel="stylesheet">
+  <!-- css boot multiselect -->
+  <link href="{% static 'css/bootstrap-multiselect.css' %}" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="{% static 'css/mdb.min.css' %}" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="{% static 'css/style.css' %}" rel="stylesheet">
 
+
 </head>
 <body>
+
+  <div id="loading" class="ui active dimmer">
+      <div class="ui text loaderSemantic">Carregando</div>
+  </div>
 
   <div id="app">
     <!--Navbar-->
@@ -190,6 +199,8 @@
   <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="{% static 'js/mdb.min.js' %}"></script>
+  <!-- js bootstrap multiselect -->
+  <script src="{% static 'js/bootstrap-multiselect.js' %}" defer></script>
 
   <script type="text/javascript">
 
@@ -222,7 +233,15 @@
         $("#modalContato").modal("show");
       });
 
+      /* scripts específicos */
+      {% block scripts %} {% endblock %}
+
       alturaMinimaApp();
+
+      setTimeout( function(){
+          // Desativar loading
+          $('#loading').css('display', 'none');
+      }, 200);
 
       /*console.log("{{imoveis}}");*/
 
